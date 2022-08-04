@@ -1,0 +1,118 @@
+.leftbar {
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bs-dark);
+  z-index: 200;
+  transition: width .3s ease-out;
+}
+
+#leftbar ul {
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 576px) {
+  #leftbar ul li {
+    margin: 30px 30px;
+    color: var(--bs-body-color);
+    position: relative;
+  }
+}
+
+@media (max-width: 575px) {
+  #leftbar ul li {
+    margin: 13px 30px;
+    color: var(--bs-body-color);
+    position: relative;
+  }
+}
+
+#leftbar ul a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--bs-body-color);
+  width: 250px;
+  text-align: center;
+}
+
+#leftbar ul a:hover {
+  background-image: linear-gradient( to right, rgba(255,255,255, 0.1), rgba(255,255,255, 0.3));
+  backdrop-filter: blur(10px);
+}
+
+#leftbar ul a.active {
+  display: block;
+  padding: 10px 20px;
+  color: var(--bs-body-color);
+  width: 250px;
+  background-image: linear-gradient( to right, rgba(255,255,255, 0.1), rgba(255,255,255, 0.3));
+  backdrop-filter: blur(10px);
+  border-left: 5px solid var(--bs-primary);
+  font-weight: bolder;
+}
+
+#profile_main {
+  margin-left: 0;
+}
+
+#profilebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  max-width: 100%;
+  margin-left: 350px;
+  z-index: 100;
+}
+
+@media (min-width: 601px) {
+  .profile_section {
+    margin-top: 100px;
+    margin-bottom: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile_section {
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+}
+
+#profileNav {
+  border-radius: 20px;
+}
+
+#profileNav a {
+  color: rgba(255,255,255,0.5);
+}
+
+#profileNav a:hover {
+  color: var(--bs-body-color);
+}
+
+#profileNav a.active {
+  color: var(--bs-body-color);
+}
+
+#profileNav a.active::before {
+  content: '|';
+  color: var(--bs-primary);
+  margin-right: 10px;
+}
+
+.profile_dp {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.profile_navlist {
+  opacity: 0;
+  transition: opacity .2s ease-in;
+}
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>streamHeavens</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/account.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="assets/css/movies.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <aside id="leftbar" class="d-flex justify-content-center align-items-center leftbar">
+        <div class="overflow-hidden">
+            <ul class="profile_navlist">
+                <li style="backdrop-filter: opacity(1) blur(0px);filter: blur(0px);"><a href="/">Home</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="tvshows.html">Tv shows</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="mailto:support@streamHeavens.com" target="_blank">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div><button class="btn position-absolute text-light profilebar_close" type="button" style="top: 20px;right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" class="me-1 mb-1" style="font-size: 30px;">
+                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg></button>
+        <p class="position-absolute text_small text-white-50" style="bottom: 10px;">Developed by <a href="https://twitter.com/codemonga" target="_blank">@codemonga</a></p>
+    </aside>
+    <section class="vh-100 w-100 position-relative"><img src="https://onesheetdesign.com/wp-content/uploads/movie_poster_design.jpg" width="100%" height="100%" style="object-fit: cover;">
+        <div class="h-100 w-100 position-absolute auth-overlay d-flex justify-content-center align-items-center">
+            <div id="auth_bar" class="py-3 px-3 w-100">
+                <nav class="navbar navbar-dark p-3">
+                    <div class="container-fluid"><a class="navbar-brand text-primary fw-bold brand_name" href="#" style="/*font-size: 14px;*/">STREAMHEAVENS</a>
+                        <div class="d-flex"><a class="btn d-flex px-0 text-white-50" role="button" href="login.html"><span class="d-none d-lg-block ms-1">login</span></a><a class="btn text-light px-0" role="button" href="register"><span class="d-none d-lg-block ms-1">|</span></a><a class="btn d-flex px-0 me-2 text-light" role="button" href="register.html"><span class="d-none d-lg-block ms-1">register</span></a>
+                            <div class="dropstart pt-2 px-1 d-lg-none"><a aria-expanded="false" data-bs-toggle="dropdown" class="auth-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" class="auth-icon">
+                                        <path d="M18 9V12M18 12V15M18 12H21M18 12H15M13 7C13 9.20914 11.2091 11 9 11C6.79086 11 5 9.20914 5 7C5 4.79086 6.79086 3 9 3C11.2091 3 13 4.79086 13 7ZM3 20C3 16.6863 5.68629 14 9 14C12.3137 14 15 16.6863 15 20V21H3V20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>&nbsp;</a>
+                                <div class="dropdown-menu dropdown-menu-dark"><a class="dropdown-item" href="login.html">login</a><a class="dropdown-item" href="register.html">register</a></div>
+                            </div><button class="btn p-0 profile_menubar" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" class="text-light" style="font-size: 35px;">
+                                    <path d="M4 8H20M4 16H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg></button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <form class="auth-form">
+                <h3 class="mt-0 mb-4 auth-heading">RESET PASSWORD!</h3>
+                <div class="mb-4">
+                    <div class="d-flex align-items-center justify-content-between mb-2"><label class="form-label mb-0">New Password</label><button class="btn btn-sm text-light" type="button">show</button></div><input class="form-control" type="password" placeholder="xxxxxxxxxx" autocomplete="off">
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex align-items-center justify-content-between mb-2"><label class="form-label mb-0">Confirm Password</label><button class="btn btn-sm text-light" type="button">show</button></div><input class="form-control" type="password" placeholder="xxxxxxxxxx" autocomplete="off">
+                </div><button class="btn btn-primary btn-lg w-100 mb-4 border-0" type="button">submit</button>
+            </form>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/index.js"></script>
+</body>
+
+</html>
