@@ -135,6 +135,10 @@
   background-color: #121317;
 }
 
+.banner {
+  height: 55vh;
+}
+
 @media (min-width: 992px) {
   .banner-overlay {
     /*background-image: linear-gradient(rgba(9,10,12,0.2) 0%, rgba(9,10,12,0.5) 5%, #090A0C 95%);*/
