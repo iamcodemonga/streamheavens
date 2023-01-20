@@ -1,5 +1,5 @@
-import { Link } from "react-dom";
-import "../../asset/css/auth.css";
+import { Link } from "react-router-dom";
+import "../../assets/css/auth.css";
 
 const ResetPassword = () => {
     return <>
@@ -7,11 +7,11 @@ const ResetPassword = () => {
             <div className="overflow-hidden">
                 <ul className="profile_navlist">
                     <li style={{backdropFilter: 'opacity(1) blur(0px)', filter: 'blur(0px)'}}><Link to="/">Home</Link></li>
-                    <li><Link to="movies">Movies</Link></li>
-                    <li><Link to="tvshows">Tv shows</Link></li>
-                    <li><Link to="pricing">Pricing</Link></li>
+                    <li><Link to="/movies">Movies</Link></li>
+                    <li><Link to="/tvshows">Tv shows</Link></li>
+                    <li><Link to="/pricing">Pricing</Link></li>
                     <li><a href="mailto:support@streamHeavens.com" target="_blank" rel="noopener noreferrer">Contact</a></li>
-                    <li><Link to="about">About</Link></li>
+                    <li><Link to="/about">About</Link></li>
                 </ul>
             </div>
             <button className="btn position-absolute text-light profilebar_close" type="button" style={{top: 20, right: 20}}>
@@ -28,9 +28,9 @@ const ResetPassword = () => {
                         <div className="container-fluid">
                             <Link className="navbar-brand text-primary fw-bold brand_name" to="/">STREAMHEAVENS</Link>
                             <div className="d-flex">
-                                <Link className="btn d-flex text-light px-0" role="button" to="login"><span className="d-none d-lg-block ms-1">login</span></Link>
-                                <span className="d-none d-lg-block ms-1">|</span>
-                                <Link className="btn d-flex text-white-50 px-0 me-2" role="button" to="register"><span className="d-none d-lg-block ms-1">register</span></Link>
+                                <Link className="btn d-flex text-white-50 px-0" role="button" to="/login"><span className="d-none d-lg-block ms-1">login</span></Link>
+                                <Link class="btn text-light px-0" role="button" to="/register"><span className="d-none d-lg-block ms-1">|</span></Link>
+                                <Link className="btn d-flex text-white-50 px-0 me-2" role="button" to="/register"><span className="d-none d-lg-block ms-1">register</span></Link>
                                 <div className="dropstart pt-2 px-1 d-lg-none">
                                     <Link aria-expanded="false" data-bs-toggle="dropdown" className="auth-link" to="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" className="auth-icon">
@@ -38,8 +38,8 @@ const ResetPassword = () => {
                                         </svg>&nbsp;
                                     </Link>
                                     <div className="dropdown-menu dropdown-menu-dark">
-                                        <Link className="dropdown-item" to="login">login</Link>
-                                        <Link className="dropdown-item" to="register">register</Link>
+                                        <Link className="dropdown-item" to="/login">login</Link>
+                                        <Link className="dropdown-item" to="/register">register</Link>
                                     </div>
                                 </div>
                                 <button className="btn p-0 profile_menubar" type="button">

@@ -1,17 +1,17 @@
 import "../../assets/css/home.css";
-import { NavLink, Link } from "react-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Pricing = () => {
     return <>
         <aside id="sidebar" className="d-flex justify-content-center align-items-center">
             <div className="overflow-hidden">
             <ul className="nav_list">
-                <li style={{backdropFilter: 'opacity(1) blur(0px)', filter: 'blur(0px)'}}><a className="active" href="/">Home</a></li>
-                <li><NavLink to="movies">Movies</NavLink></li>
-                <li><NavLink to="tvshows">Tv shows</NavLink></li>
-                <li><NavLink to="pricing">Pricing</NavLink></li>
+                <li style={{backdropFilter: 'opacity(1) blur(0px)', filter: 'blur(0px)'}}><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/movies">Movies</NavLink></li>
+                <li><NavLink to="/tvshows">Tv shows</NavLink></li>
+                <li><NavLink to="/pricing" className="active">Pricing</NavLink></li>
                 <li><a href="mailto:support@streamHeavens.com" target="_blank" rel="noopener noreferrer">Contact</a></li>
-                <li><NavLink to="about">About</NavLink></li>
+                <li><NavLink to="/about">About</NavLink></li>
             </ul>
             </div><button className="btn position-absolute text-light d-lg-none menubar_close" type="button" style={{top: 20, right: 20}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" className="me-1 mb-1" style={{fontSize: 30}}>
                 <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
@@ -22,9 +22,9 @@ const Pricing = () => {
             <div id="topbar" className="py-3 px-3 w-100">
                 <nav className="navbar navbar-dark p-3">
                     <div className="container-fluid">
-                        <Link className="navbar-brand text-primary fw-bold brand_name" href="/">STREAMHEAVENS</Link>
+                        <Link className="navbar-brand text-primary fw-bold brand_name" to="/">STREAMHEAVENS</Link>
                         <div className="d-flex">
-                            <Link className="btn d-flex text-light px-0 me-2" role="button" href="register">
+                            <Link className="btn d-flex text-light px-0 me-2" role="button" to="/register">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{fontSize: 23}}>
                                     <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
