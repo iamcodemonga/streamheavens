@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserDetails = () => {
   return (
-        <div className="w-100 h-100 py-5 px-4 bg-dark d-non" style={{borderRadius: 20}}>
+        <div className="w-100 h-100 py-5 px-4 bg-dark" style={{borderRadius: 20}}>
             <div className="row">
                 <div className="col-12"><img className="profile_dp" src="https://images.pexels.com/photos/12771773/pexels-photo-12771773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt='profile_picture' /></div>
                 <div className="col-12">

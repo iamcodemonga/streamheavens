@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserEdit = () => {
   return (
-        <div className="w-100 h-100 py-5 px-4 bg-dark d-none" style={{borderRadius: 20}}>
+        <div className="w-100 h-100 py-5 px-4 bg-dark" style={{borderRadius: 20}}>
             <div className="row">
                 <div className="col">
                 <form>
@@ -72,7 +72,7 @@ const UserEdit = () => {
                         </select></div>
                     </div>
                     <hr />
-                    </div><button className="btn btn-primary" type="button">submit</button>
+                    </div><button className="btn btn-primary border-0" type="button">submit</button>
                 </form>
                 </div>
             </div>

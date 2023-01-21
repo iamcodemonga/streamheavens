@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserPassword = () => {
   return (
-        <div className="w-100 h-100 py-5 px-4 bg-dark d-none" style={{borderRadius: 20}}>
+        <div className="w-100 h-100 py-5 px-4 bg-dark" style={{borderRadius: 20}}>
             <div className="row">
                 <div className="col">
                 <form>

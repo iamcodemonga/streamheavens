@@ -12,7 +12,7 @@ import ForgotPassword from "./pages/auth/ForgotPassword";
 import Reset from "./pages/auth/ResetPassword";
 //  user profile routes
 import Profile from "./pages/user/Profile";
-// import Details from "./components/UserDetails";
+import Details from "./components/UserDetails";
 import EditProfile from "./components/UserEdit";
 import Favourites from "./components/UserFavourites";
 import ChangePassword from "./components/UserPassword";
@@ -35,10 +35,10 @@ function App() {
         <Route path="forgotpassword" element={<ForgotPassword/>} />
         <Route path="reset" element={<Reset/>} />
         <Route path=":id" element={<Profile/>} >
-            {/* <Route path="" element={<Details/>} /> */}
+            <Route index element={<Details/>} />
+            <Route path="favourites" element={<Favourites/>} />
             <Route path="edit" element={<EditProfile/>} />
             <Route path="password" element={<ChangePassword/>} />
-            <Route path="favourites" element={<Favourites/>} />
         </Route>
         <Route path="screen" element={<Screen/>} />
       </Routes>
