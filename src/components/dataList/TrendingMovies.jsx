@@ -2,130 +2,130 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const TrendingMovies = () => {
-  return (
-    <div className="container-fluid px-md-4">
-        <div className="d-flex justify-content-between align-items-center mt-5 mb-4">
-        <h5 className="my-0">Trending movies</h5>
-        <div><button className="btn text-light me-1 prevbtn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" fill="none" style={{marginBottom: 8, fontSize: 20}}>
-                <path fillRule="evenodd" clipRule="evenodd" d="M9.70711 16.7071C9.31658 17.0976 8.68342 17.0976 8.29289 16.7071L2.29289 10.7071C1.90237 10.3166 1.90237 9.68342 2.29289 9.29289L8.29289 3.29289C8.68342 2.90237 9.31658 2.90237 9.70711 3.29289C10.0976 3.68342 10.0976 4.31658 9.70711 4.70711L5.41421 9H17C17.5523 9 18 9.44772 18 10C18 10.5523 17.5523 11 17 11L5.41421 11L9.70711 15.2929C10.0976 15.6834 10.0976 16.3166 9.70711 16.7071Z" fill="currentColor" />
-            </svg></button><button className="btn text-light nextbtn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" fill="none" style={{marginBottom: 8, fontSize: 20}}>
-                <path fillRule="evenodd" clipRule="evenodd" d="M10.2929 3.29289C10.6834 2.90237 11.3166 2.90237 11.7071 3.29289L17.7071 9.29289C18.0976 9.68342 18.0976 10.3166 17.7071 10.7071L11.7071 16.7071C11.3166 17.0976 10.6834 17.0976 10.2929 16.7071C9.90237 16.3166 9.90237 15.6834 10.2929 15.2929L14.5858 11L3 11C2.44772 11 2 10.5523 2 10C2 9.44772 2.44772 9 3 9H14.5858L10.2929 4.70711C9.90237 4.31658 9.90237 3.68342 10.2929 3.29289Z" fill="currentColor" />
-            </svg></button></div><a className="btn btn-primary btn-sm border-0 bg-primary d-none" role="button" href="movies.html">view more<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" className="ms-1">
-            <path d="M9 5L16 12L9 19" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></a>
-        </div>
-        <div className="movie-container d-flex">
-        <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-14.jpeg" alt="moviecard_image" /></Link>
-            <div className="card-body px-0">
-            <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
-            <div>
-                <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
-                    <circle cx={8} cy={8} r={8} />
-                </svg>action</p>
+    return (
+        <div className="container-fluid px-md-4">
+            <div className="d-flex justify-content-between align-items-center mt-5 mb-4">
+            <h5 className="my-0">Trending movies</h5>
+            <div><button className="btn text-light me-1 prevbtn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" fill="none" style={{marginBottom: 8, fontSize: 20}}>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M9.70711 16.7071C9.31658 17.0976 8.68342 17.0976 8.29289 16.7071L2.29289 10.7071C1.90237 10.3166 1.90237 9.68342 2.29289 9.29289L8.29289 3.29289C8.68342 2.90237 9.31658 2.90237 9.70711 3.29289C10.0976 3.68342 10.0976 4.31658 9.70711 4.70711L5.41421 9H17C17.5523 9 18 9.44772 18 10C18 10.5523 17.5523 11 17 11L5.41421 11L9.70711 15.2929C10.0976 15.6834 10.0976 16.3166 9.70711 16.7071Z" fill="currentColor" />
+                </svg></button><button className="btn text-light nextbtn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" fill="none" style={{marginBottom: 8, fontSize: 20}}>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M10.2929 3.29289C10.6834 2.90237 11.3166 2.90237 11.7071 3.29289L17.7071 9.29289C18.0976 9.68342 18.0976 10.3166 17.7071 10.7071L11.7071 16.7071C11.3166 17.0976 10.6834 17.0976 10.2929 16.7071C9.90237 16.3166 9.90237 15.6834 10.2929 15.2929L14.5858 11L3 11C2.44772 11 2 10.5523 2 10C2 9.44772 2.44772 9 3 9H14.5858L10.2929 4.70711C9.90237 4.31658 9.90237 3.68342 10.2929 3.29289Z" fill="currentColor" />
+                </svg></button></div><a className="btn btn-primary btn-sm border-0 bg-primary d-none" role="button" href="movies.html">view more<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" className="ms-1">
+                <path d="M9 5L16 12L9 19" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></a>
             </div>
-            </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
-                <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></button>
-        </div>
-        <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-15.jpeg" alt="moviecard_image" /></Link>
-            <div className="card-body px-0">
-            <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
-            <div>
-                <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
-                    <circle cx={8} cy={8} r={8} />
-                </svg>action</p>
+            <div className="movie-container d-flex">
+            <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-14.jpeg" alt="moviecard_image" /></Link>
+                <div className="card-body px-0">
+                <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
+                <div>
+                    <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
+                        <circle cx={8} cy={8} r={8} />
+                    </svg>action</p>
+                </div>
+                </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
+                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></button>
             </div>
-            </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
-                <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></button>
-        </div>
-        <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-16.jpeg" alt="moviecard_image" /></Link>
-            <div className="card-body px-0">
-            <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
-            <div>
-                <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
-                    <circle cx={8} cy={8} r={8} />
-                </svg>action</p>
+            <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-15.jpeg" alt="moviecard_image" /></Link>
+                <div className="card-body px-0">
+                <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
+                <div>
+                    <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
+                        <circle cx={8} cy={8} r={8} />
+                    </svg>action</p>
+                </div>
+                </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
+                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></button>
             </div>
-            </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
-                <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></button>
-        </div>
-        <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-17.jpeg" alt="moviecard_image" /></Link>
-            <div className="card-body px-0">
-            <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
-            <div>
-                <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
-                    <circle cx={8} cy={8} r={8} />
-                </svg>action</p>
+            <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-16.jpeg" alt="moviecard_image" /></Link>
+                <div className="card-body px-0">
+                <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
+                <div>
+                    <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
+                        <circle cx={8} cy={8} r={8} />
+                    </svg>action</p>
+                </div>
+                </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
+                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></button>
             </div>
-            </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
-                <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></button>
-        </div>
-        <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-18.jpeg" alt="moviecard_image" /></Link>
-            <div className="card-body px-0">
-            <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
-            <div>
-                <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
-                    <circle cx={8} cy={8} r={8} />
-                </svg>action</p>
+            <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-17.jpeg" alt="moviecard_image" /></Link>
+                <div className="card-body px-0">
+                <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
+                <div>
+                    <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
+                        <circle cx={8} cy={8} r={8} />
+                    </svg>action</p>
+                </div>
+                </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
+                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></button>
             </div>
-            </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
-                <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></button>
-        </div>
-        <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-19.jpeg" alt="moviecard_image" /></Link>
-            <div className="card-body px-0">
-            <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
-            <div>
-                <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
-                    <circle cx={8} cy={8} r={8} />
-                </svg>action</p>
+            <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-18.jpeg" alt="moviecard_image" /></Link>
+                <div className="card-body px-0">
+                <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
+                <div>
+                    <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
+                        <circle cx={8} cy={8} r={8} />
+                    </svg>action</p>
+                </div>
+                </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
+                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></button>
             </div>
-            </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
-                <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></button>
-        </div>
-        <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-20.jpeg" alt="moviecard_image" /></Link>
-            <div className="card-body px-0">
-            <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
-            <div>
-                <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
-                    <circle cx={8} cy={8} r={8} />
-                </svg>action</p>
+            <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-19.jpeg" alt="moviecard_image" /></Link>
+                <div className="card-body px-0">
+                <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
+                <div>
+                    <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
+                        <circle cx={8} cy={8} r={8} />
+                    </svg>action</p>
+                </div>
+                </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
+                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></button>
             </div>
-            </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
-                <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></button>
-        </div>
-        <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-21.jpeg" alt="moviecard_image" /></Link>
-            <div className="card-body px-0">
-            <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
-            <div>
-                <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
-                    <circle cx={8} cy={8} r={8} />
-                </svg>action</p>
+            <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-20.jpeg" alt="moviecard_image" /></Link>
+                <div className="card-body px-0">
+                <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
+                <div>
+                    <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
+                        <circle cx={8} cy={8} r={8} />
+                    </svg>action</p>
+                </div>
+                </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
+                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></button>
             </div>
-            </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
-                <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></button>
-        </div>
-        <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-22.jpeg" alt="moviecard_image" /></Link>
-            <div className="card-body px-0">
-            <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
-            <div>
-                <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
-                    <circle cx={8} cy={8} r={8} />
-                </svg>action</p>
+            <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-21.jpeg" alt="moviecard_image" /></Link>
+                <div className="card-body px-0">
+                <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
+                <div>
+                    <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
+                        <circle cx={8} cy={8} r={8} />
+                    </svg>action</p>
+                </div>
+                </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
+                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></button>
             </div>
-            </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
-                <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg></button>
+            <div className="card movie-card"><Link to="movie"><img src="http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-22.jpeg" alt="moviecard_image" /></Link>
+                <div className="card-body px-0">
+                <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie">This is the title of the movie stupid</Link></h6>
+                <div>
+                    <p className="text_small mb-0 text-white-50">1hr 35mins<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-circle-fill mx-2" style={{fontSize: 5}}>
+                        <circle cx={8} cy={8} r={8} />
+                    </svg>action</p>
+                </div>
+                </div><span className="badge bg-primary position-absolute" style={{top: 10, left: 10}}>18+</span><button className="btn text-light position-absolute" type="button" style={{right: 10}}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{marginBottom: 8}}>
+                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                </svg></button>
+            </div>
+            </div>
         </div>
-        </div>
-    </div>
-  )
+    )
 }
 
 export default TrendingMovies

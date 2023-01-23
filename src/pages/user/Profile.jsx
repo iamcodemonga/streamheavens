@@ -1,4 +1,5 @@
 import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import LeftBar from '../../components/sidebars/ProfileBar';
 import NavBar from '../../components/navbars/ProfileNav';
 import Footer from '../../components/Footer'
@@ -6,6 +7,27 @@ import Footer from '../../components/Footer'
 const Profile = () => {
 
     const { id } = useParams();
+
+    const handleSideBar = () => {
+        const profile_menubar = document.querySelector('.profile_menubar');
+        const profilebar_close = document.querySelector('.profilebar_close');
+        const leftbar = document.querySelector('#leftbar');
+        const profile_navlist = document.querySelector('.profile_navlist');
+
+        profile_menubar.addEventListener('click', () => {
+            leftbar.style.width = '100%';
+            profile_navlist.style.opacity = '1';
+        });
+
+        profilebar_close.addEventListener('click', () => {
+            profile_navlist.style.opacity = '0';
+            leftbar.style.width = '0';
+        });
+    }
+
+    useEffect(() => {
+        handleSideBar();
+    }, [])
 
     return <>
         <LeftBar />
