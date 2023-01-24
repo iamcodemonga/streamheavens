@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PricingBanner = () => {
   return (
-        <header className="w-100 banner position-relative" style={{backgroundImage: 'url(https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)', backgroundPosition: 'center', backgroundSize: 'cover'}}>
+        <header className="w-100 banner position-relative" style={{backgroundImage: 'url(https://images.pexels.com/photos/7991781/pexels-photo-7991781.jpeg?auto=compress&cs=tinysrgb&w=1600)', backgroundPosition: 'top', backgroundSize: 'cover'}}>
             <div className="h-100 w-100 banner-overlay d-flex">
                 <div className="hero-banner-content p-4">
                     <h1 className="mb-1">PRICING PLAN</h1>

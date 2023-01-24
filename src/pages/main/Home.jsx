@@ -11,7 +11,6 @@ import Footer from '../../components/Footer'
 import "../../assets/css/home.css";
 
 const Home = () => {
-
     const handleSlide = () => {
         const movieContainers = [...document.querySelectorAll('.movie-container')];
         const nextbtn = [...document.querySelectorAll('.nextbtn')];
@@ -53,8 +52,6 @@ const Home = () => {
         handleSlide();
         handleSideBar();
     }, [])
-
-
 
     return <>
         <LeftBar />
