@@ -13,7 +13,7 @@ const Popup = ({ status, handleHide, details, mediatype }) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
-                            <div className="w-100 h-100"><img className="modal_movie_img mb-3" src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} alt="movie_image" width="100%" /></div>
+                            <div className="w-100 h-100"><img className="modal_movie_img mb-3" src={details.poster_path ? `https://image.tmdb.org/t/p/w500/${details.poster_path}`: `https://sushihousemenu.com/Media/Default/Menu%20Items/placeholder.png`} alt="movie_image" width="100%" /></div>
                         </div>
                         <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
                             <div className="movie_details_container">

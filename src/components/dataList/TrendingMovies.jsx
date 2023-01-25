@@ -43,7 +43,7 @@ const TrendingMovies = () => {
                     </svg></a>
                 </div>
                 <div className="movie-container d-flex">
-                    {trendingMovies && trendingMovies.map((movie) => <div className="card movie-card"><Link to="movie" onClick={(e) => handleTap(e, movie)}><img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="moviecard_image" /></Link>
+                    {trendingMovies && trendingMovies.map((movie) => <div className="card movie-card"><Link to="movie" onClick={(e) => handleTap(e, movie)}><img src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `https://sushihousemenu.com/Media/Default/Menu%20Items/placeholder.png`} alt="moviecard_image" /></Link>
                             <div className="card-body px-0">
                             <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie" onClick={(e) => handleTap(e, movie)}>{movie.title}</Link></h6>
                             <div>

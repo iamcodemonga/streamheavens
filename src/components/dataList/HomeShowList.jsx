@@ -36,7 +36,7 @@ const HomeShowList = () => {
                 <div className="row gy-4 mb-4">
                     {shows && shows.slice(0, 8).map((show) => 
                         <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3">
-                            <div className="card movie-card-grid"><Link to="show" onClick={(e) => handleTap(e, show)}><img src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`} alt="show_card_image" /></Link>
+                            <div className="card movie-card-grid"><Link to="show" onClick={(e) => handleTap(e, show)}><img src={show.poster_path ? `https://image.tmdb.org/t/p/w500/${show.poster_path}` : `https://sushihousemenu.com/Media/Default/Menu%20Items/placeholder.png`} alt="show_card_image" /></Link>
                             <div className="card-body px-0">
                                 <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="show" onClick={(e) => handleTap(e, show)}>{show.name}</Link></h6>
                                 <div>
