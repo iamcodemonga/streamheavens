@@ -39,7 +39,6 @@ const Movies = () => {
             </section>
             <Footer />
         </main>
-
     </>
 }
 
