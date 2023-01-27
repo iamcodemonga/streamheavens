@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import {  fetchMovies } from '../../features/contentSlice';
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import Loader from '../Loaders/GridLoader';
 import Popup from '../Popup';
 
 const MovieList = () => {
 
-    const [ movies, setMovies ] = useState([]);
-    const key = process.env.REACT_APP_MOVIE_API;
-    const baseURL = process.env.REACT_APP_MOVIE_BASEURL;
+    const { movies, moviesLoading, moviesError, moviesSuccess } = useSelector((state) => state.content);
     const [showModal, setShowModal] = useState(false);
     const [details, setDetails] = useState([]);
     const [limit, setLimit] = useState(8)
     const [query, setQuery] = useState('');
+    const dispatch = useDispatch();
 
     const handleShow = () => setShowModal(true);
 
@@ -25,36 +26,26 @@ const MovieList = () => {
 
     const handleSearch = async() => {
         setLimit(8)
-        if (query) {
-            setTimeout(async () => {
-                const { data } = await axios.get(`${baseURL}/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`);
-                setMovies(data.results);
-            }, 1500);
-        } else {
-            setTimeout(async () => {
-                const { data } = await axios.get(`${baseURL}/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`);
-                setMovies(data.results)
-            }, 1500);
-        }
+        setTimeout(() => {
+            dispatch(fetchMovies(query))
+        }, 1500);
     }
 
     const handleMore = () => setLimit((prev) => prev+4);
 
     useEffect(() => {
-        const FetchMovies = async () => {
-            const { data } = await axios.get(`${baseURL}/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`);
-            setMovies(data.results)
-        }
-        FetchMovies()
-    }, [baseURL, key])
+        dispatch(fetchMovies())
+    }, [dispatch])
 
     return (
         <>
             <div className="container-fluid pb-5 px-md-4">
                 <div className="py-5"><input type="text" className="form-control search_input" placeholder="search movies" value={query} onChange={(e) => setQuery(e.target.value)} onKeyUp={handleSearch} /></div>
                     <div className="row gy-4">
-                        {movies && movies.slice(0, limit).map((movie) =>
-                            <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3">
+                        {moviesError && <Loader />}
+                        {moviesLoading && <Loader />}
+                        {moviesSuccess && movies.slice(0, limit).map((movie, index) =>
+                            <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3" key={index}>
                                 <div className="card movie-card-grid"><Link to="movie" onClick={(e) => handleTap(e, movie)}><img src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `https://sushihousemenu.com/Media/Default/Menu%20Items/placeholder.png`} className="h-100 w-100" alt="movie_image" /></Link>
                                 <div className="card-body px-0">
                                     <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="movie" onClick={(e) => handleTap(e, movie)}>{movie.title}</Link></h6>

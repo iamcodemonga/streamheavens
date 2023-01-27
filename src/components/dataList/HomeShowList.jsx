@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import {  fetchTvSeries } from '../../features/contentSlice';
+import Loader from '../Loaders/GridLoader'
 import Popup from '../Popup';
 
 const HomeShowList = () => {
 
-    const [ shows, setShows ] = useState([]);
-    const key = process.env.REACT_APP_MOVIE_API;
-    const baseURL = process.env.REACT_APP_MOVIE_BASEURL;
+    const { tvSeries, tvSeriesLoading, tvSeriesError, tvSeriesSuccess } = useSelector((state) => state.content);
     const [showModal, setShowModal] = useState(false);
-    const [details, setDetails] = useState([])
+    const [details, setDetails] = useState([]);
+    const dispatch = useDispatch();
 
     const handleShow = () => setShowModal(true);
 
@@ -22,20 +23,18 @@ const HomeShowList = () => {
     }
 
     useEffect(() => {
-        const FetchShows = async () => {
-            const { data } = await axios.get(`${baseURL}/discover/tv?api_key=${key}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`);
-            setShows(data.results)
-        }
-        FetchShows()
-    }, [baseURL, key])
+        dispatch(fetchTvSeries())
+    }, [dispatch])
 
     return (
         <>
             <div className="container-fluid px-md-4 pb-5">
                 <h4 className="mb-5">Tv Shows</h4>
                 <div className="row gy-4 mb-4">
-                    {shows && shows.slice(0, 8).map((show) => 
-                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3">
+                    {tvSeriesLoading && <Loader />}
+                    {tvSeriesError && <Loader />}
+                    {tvSeriesSuccess && tvSeries.slice(0, 8).map((show, index) => 
+                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3" key={index}>
                             <div className="card movie-card-grid"><Link to="show" onClick={(e) => handleTap(e, show)}><img src={show.poster_path ? `https://image.tmdb.org/t/p/w500/${show.poster_path}` : `https://sushihousemenu.com/Media/Default/Menu%20Items/placeholder.png`} alt="show_card_image" /></Link>
                             <div className="card-body px-0">
                                 <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="show" onClick={(e) => handleTap(e, show)}>{show.name}</Link></h6>

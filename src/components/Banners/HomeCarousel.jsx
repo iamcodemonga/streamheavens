@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
-import axios from 'axios';
-import Carousel from 'react-bootstrap/Carousel'
+import { useSelector, useDispatch } from "react-redux";
+import { fetchRatedMovies } from '../../features/contentSlice';
+import Loader from '../Loaders/CarouselLoader';
+import Carousel from 'react-bootstrap/Carousel';
 
 const HomeCarousel = () => {
     
-    const [ ratedMovies, setRatedMovies ] = useState([]);
-    const key = process.env.REACT_APP_MOVIE_API;
-    const baseURL = process.env.REACT_APP_MOVIE_BASEURL;
+    const { ratedMovies, ratedMoviesLoading, ratedMoviesError, ratedMoviesSuccess } = useSelector((state) => state.content)
+    const dispatch = useDispatch();
 
    useEffect(() => {
-        const FetchCarouselMovies = async () => {
-            const response = await axios.get(`${baseURL}/movie/top_rated?api_key=${key}&language=en-US&page=2`);
-            setRatedMovies(response.data.results);
-        }
-        FetchCarouselMovies();
-   }, [baseURL, key])
+        dispatch(fetchRatedMovies())
+   }, [dispatch])
+
   return (
         <div className="container-fluid my-5 py-4 px-md-4">
             <Carousel fade indicators={false} controls={false}>
-                {ratedMovies && ratedMovies.slice(0, 3).map((movie => <Carousel.Item>
-                    <div className="slide-container position-relative">
+                {ratedMoviesError && <Loader />}
+                {ratedMoviesLoading && <Loader />}
+                {ratedMoviesSuccess && ratedMovies.slice(0, 3).map((movie, index) => <Carousel.Item key={index}>
+                    <div className="slide-container position-relative" key={index}>
                         <img className="w-100 h-100" src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="Slide_Image" style={{objectFit: 'cover', objectPosition: 'top', backgroundColor: '#121317'}} />
                         <div className="carousel-overlay w-100 h-100 position-absolute d-flex align-items-center">
                             <div className="carousel-content p-4">
@@ -33,7 +33,7 @@ const HomeCarousel = () => {
                             </div>
                         </div>
                     </div>
-                </Carousel.Item>))}
+                </Carousel.Item>)}
             </Carousel>
         </div>
   )

@@ -5,11 +5,12 @@ import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop';
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import contentReducer from "./features/contentSlice"
 import '/node_modules/bootstrap/dist/js/bootstrap';
 import './index.css';
 
 const store = configureStore({
-  reducer: {}
+  reducer: { content: contentReducer }
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

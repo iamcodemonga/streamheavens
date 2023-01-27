@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import {  fetchTvSeries } from '../../features/contentSlice';
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import Loader from '../Loaders/GridLoader';
 import Popup from '../Popup';
 
 const ShowList = () => {
 
-    const [ shows, setShows ] = useState([]);
-    const key = process.env.REACT_APP_MOVIE_API;
-    const baseURL = process.env.REACT_APP_MOVIE_BASEURL;
+    const { tvSeries, tvSeriesLoading, tvSeriesError, tvSeriesSuccess } = useSelector((state) => state.content);
     const [showModal, setShowModal] = useState(false);
     const [details, setDetails] = useState([]);
     const [limit, setLimit] = useState(8);
     const [query, setQuery] = useState('');
+    const dispatch = useDispatch();
 
     const handleShow = () => setShowModal(true);
 
@@ -24,36 +25,25 @@ const ShowList = () => {
     }
 
     const handleSearch = async() => {
-        setLimit(8)
-        if (query) {
-            setTimeout(async () => {
-                const { data } = await axios.get(`${baseURL}/search/tv?api_key=${key}&language=en-US&page=1&query=${query}&include_adult=false`);
-                setShows(data.results);
-            }, 1500);
-        } else {
-            setTimeout(async () => {
-                const { data } = await axios.get(`${baseURL}/discover/tv?api_key=${key}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`);
-                setShows(data.results)
-            }, 1500);
-        }
+        setLimit(8);
+        setTimeout(() => {
+            dispatch(fetchTvSeries(query));
+        }, 1500);
     }
 
     const handleMore = () => setLimit((prev) => prev+4);
 
     useEffect(() => {
-        const FetchShows = async () => {
-            const { data } = await axios.get(`${baseURL}/discover/tv?api_key=${key}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`);
-            setShows(data.results)
-        }
-        FetchShows()
-    }, [baseURL, key])
-
+        dispatch(fetchTvSeries())
+    }, [dispatch])
     return (
         <>
             <div className="container-fluid pb-5 px-md-4">
                 <div className="py-5"><input type="text" className="form-control search_input" placeholder="search TV shows" value={query} onChange={(e) => setQuery(e.target.value)} onKeyUp={handleSearch} /></div>
                 <div className="row gy-4">
-                    {shows && shows.slice(0, limit).map((show) => <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3">
+                    {tvSeriesError && <Loader />}
+                    {tvSeriesLoading && <Loader />}
+                    {tvSeriesSuccess && tvSeries.slice(0, limit).map((show, index) => <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3" key={index}>
                         <div className="card movie-card-grid"><Link to="show" onClick={(e) => handleTap(e, show)}><img src={show.poster_path ? `https://image.tmdb.org/t/p/w500/${show.poster_path}` : `https://sushihousemenu.com/Media/Default/Menu%20Items/placeholder.png`} alt="show_image" /></Link>
                         <div className="card-body px-0">
                             <h6 className="card-title mt-0 mb-1"><Link className="text-light" to="show" onClick={(e) => handleTap(e, show)}>{show.name}</Link></h6>
