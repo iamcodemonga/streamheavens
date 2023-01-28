@@ -9,7 +9,7 @@ const AuthNav = () => {
                             <Link className="navbar-brand text-primary fw-bold brand_name" to="/">STREAMHEAVENS</Link>
                             <div className="d-flex">
                                 <Link className="btn d-flex text-light px-0" role="button" to="/login"><span className="d-none d-lg-block ms-1">login</span></Link>
-                                <Link class="btn text-light px-0" role="button" to="/register"><span className="d-none d-lg-block ms-1">|</span></Link>
+                                <Link className="btn text-light px-0" role="button" to="/register"><span className="d-none d-lg-block ms-1">|</span></Link>
                                 <Link className="btn d-flex text-light px-0 me-2" role="button" to="/register"><span className="d-none d-lg-block ms-1">register</span></Link>
                                 <div className="dropstart pt-2 px-1 d-lg-none">
                                     <Link aria-expanded="false" data-bs-toggle="dropdown" className="auth-link" to="#">
