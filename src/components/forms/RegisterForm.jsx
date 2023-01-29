@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
@@ -15,44 +15,41 @@ const RegisterForm = () => {
     const handleRegister = async(e) => {
         e.preventDefault();
         setLoading(true)
-        // if (!fullname || !email || password) {
-        //     return setErrorMessage('Please fill in all fields');
-            
-        // }
+
         try {
             const { data } = await axios.post('http://localhost:5005/auth/register', { fullname, email, password }, { withCredentials: true });
-            // console.log(data.auth)
+
             if (data.auth.status === 'failed') {
-                setLoading(false)
+                console.log(data.auth.message);
+                setLoading(false);
                 setErrorMessage(data.auth.message);
                 return;
+            } else {
+                setLoading(false);
+                setErrorMessage('');
+                setSuccessMessage(data.auth.message);
             }
 
-            setLoading(false);
-            setErrorMessage('');
-            setSuccessMessage(data.status.message);
         } catch (error) {
             console.log(error.message)
         }
-        
-        // setErrorMessage('');
-        // setSuccessMessage(data.auth.message);
+
     }
 
     return (
         <form className="auth-form" onSubmit={handleRegister}>
             <h4 className="mt-0 mb-4 auth-heading text-center">CREATE ACCOUNT</h4>
-            <div className="mb-3"><label className="form-label">Name</label><input className="form-control" type="text" placeholder="e.g john doe" onChange={(e) => setFullname(e.target.name)} /></div>
-            <div className="mb-3"><label className="form-label">Email</label><input className="form-control" type="email" placeholder="e.g johndoe@gmail.com" onChange={(e) => setEmail(e.target.name)} /></div>
+            <div className="mb-3"><label className="form-label">Name</label><input className="form-control" type="text" placeholder="e.g john doe" onChange={(e) => setFullname(e.target.value)} /></div>
+            <div className="mb-3"><label className="form-label">Email</label><input className="form-control" type="text" placeholder="e.g johndoe@gmail.com" onChange={(e) => setEmail(e.target.value)} /></div>
             <div className="mb-4">
                 <div className="d-flex align-items-center justify-content-between mb-2"><label className="form-label mb-0">Password</label><button className="btn btn-sm text-light" type="button">show</button></div>
-                <input className="form-control" type="password" placeholder="xxxxxxxxxx" autoComplete="off" onChange={(e) => setPassword(e.target.name)} />
+                <input className="form-control" type="password" placeholder="xxxxxxxxxx" autoComplete="off" onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <button className="btn btn-primary btn-lg w-100 mb-4 border-0" type="submit">submit</button>
+            {loading ? <button className="btn btn-primary btn-lg w-100 mb-4 border-0" type="button" disabled><img src='/streamloader.svg'  alt='loader' style={{width: '30px'}}/></button> : <button className="btn btn-primary btn-lg w-100 mb-4 border-0" type="submit">submit</button>}
             {errorMessage && <Alert show={true} variant="danger">{ errorMessage }</Alert>} 
             {successMessage && <Alert show={true} variant="success">{ successMessage }</Alert>}
             <div>
-                <a className="btn btn-light w-100 mb-3 border-0" role="button" href="google.com" rel="noopener noreferrer">
+                <a className="btn btn-light w-100 mb-3 border-0 py-3" role="button" href="google.com" rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-google me-3 mb-1">
                         <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z" />
                     </svg>Signup with Google</a>
