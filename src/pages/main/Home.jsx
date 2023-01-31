@@ -7,10 +7,16 @@ import LatestMovies from '../../components/dataList/LatestMovies';
 import TrendingMovies from '../../components/dataList/TrendingMovies';
 import Carousel from '../../components/Banners/HomeCarousel';
 import TVShows from '../../components/dataList/HomeShowList';
-import Footer from '../../components/Footer'
+import Footer from '../../components/Footer';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+// import { fetchUser } from '../../features/authSlice';
 import "../../assets/css/home.css";
 
 const Home = () => {
+
+    // const { user } = useSelector((state) => state.auth);
+
     const handleSlide = () => {
         const movieContainers = [...document.querySelectorAll('.movie-container')];
         const nextbtn = [...document.querySelectorAll('.nextbtn')];
@@ -48,9 +54,12 @@ const Home = () => {
         });
     }
 
+    // const dispatch = useDispatch();
+
     useEffect(() => {
         handleSlide();
         handleSideBar();
+        // dispatch(fetchUser())
     }, [])
 
     return <>

@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../features/authSlice'
 import { Alert } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
 
@@ -10,7 +12,18 @@ const RegisterForm = () => {
     const [ password, setPassword ] = useState('');
     const [ errorMessage, setErrorMessage ] = useState('');
     const [ successMessage, setSuccessMessage ] = useState('');
-    const [ loading, setLoading ] = useState(false)
+    const [ loading, setLoading ] = useState(false);
+    const [ show, setShow ] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleShowPassword = () => {
+        if(show) {
+            setShow(false)
+        } else {
+            setShow(true)
+        }
+    }
 
     const handleRegister = async(e) => {
         e.preventDefault();
@@ -23,11 +36,18 @@ const RegisterForm = () => {
                 console.log(data.auth.message);
                 setLoading(false);
                 setErrorMessage(data.auth.message);
+                setTimeout(() => {
+                    setErrorMessage("");
+                }, 2000);
                 return;
             } else {
                 setLoading(false);
                 setErrorMessage('');
                 setSuccessMessage(data.auth.message);
+                setTimeout(() => {
+                    dispatch(registerUser(data.user));
+                    navigate("/")
+                }, 2000);
             }
 
         } catch (error) {
@@ -40,10 +60,10 @@ const RegisterForm = () => {
         <form className="auth-form" onSubmit={handleRegister}>
             <h4 className="mt-0 mb-4 auth-heading text-center">CREATE ACCOUNT</h4>
             <div className="mb-3"><label className="form-label">Name</label><input className="form-control" type="text" placeholder="e.g john doe" onChange={(e) => setFullname(e.target.value)} /></div>
-            <div className="mb-3"><label className="form-label">Email</label><input className="form-control" type="text" placeholder="e.g johndoe@gmail.com" onChange={(e) => setEmail(e.target.value)} /></div>
+            <div className="mb-3"><label className="form-label">Email</label><input className="form-control" type="email" placeholder="e.g johndoe@gmail.com" onChange={(e) => setEmail(e.target.value)} /></div>
             <div className="mb-4">
-                <div className="d-flex align-items-center justify-content-between mb-2"><label className="form-label mb-0">Password</label><button className="btn btn-sm text-light" type="button">show</button></div>
-                <input className="form-control" type="password" placeholder="xxxxxxxxxx" autoComplete="off" onChange={(e) => setPassword(e.target.value)} />
+                <div className="d-flex align-items-center justify-content-between mb-2"><label className="form-label mb-0">Password</label><button className="btn btn-sm text-light" type="button" onClick={handleShowPassword}>{show ? "hide" : "show"}</button></div>
+                <input className="form-control" type={show ? "text" : "password"} placeholder="xxxxxxxxxx" autoComplete="off" onChange={(e) => setPassword(e.target.value)} />
             </div>
             {loading ? <button className="btn btn-primary btn-lg w-100 mb-4 border-0" type="button" disabled><img src='/streamloader.svg'  alt='loader' style={{width: '30px'}}/></button> : <button className="btn btn-primary btn-lg w-100 mb-4 border-0" type="submit">submit</button>}
             {errorMessage && <Alert show={true} variant="danger">{ errorMessage }</Alert>} 
@@ -83,4 +103,4 @@ const RegisterForm = () => {
     )
 }
 
-export default RegisterForm
+export default RegisterForm;

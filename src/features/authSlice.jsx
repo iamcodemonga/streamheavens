@@ -1,47 +1,35 @@
-import React from 'react';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-    user: {},
-    authLoading: false,
-    authError: false,
-    errorMessage: ''
+    user: null,
+    loading: false,
+    error: ""
 }
 
-const fetchUser = createAsyncThunk('auth/user', async() => {
-    const { data } = await axios.get('http://localhost:5005/', { withCredentials: true });
-    return data;
-});
-
-const registerUser = createAsyncThunk('auth/user', async(userInfo) => {
+export const fetchUser = createAsyncThunk('auth/user', async() => {
 
     try {
-        const { data } = await axios.post('http://localhost:5005/auth/register', userInfo, { withCredentials: true });
-        // if (data.auth.status === 'failed') {
-        //     console.log(data.auth.message);
-        //     setLoading(false);
-        //     setErrorMessage(data.auth.message);
-        //     return;
-        // } else {
-        //     setLoading(false);
-        //     setErrorMessage('');
-        //     setSuccessMessage(data.auth.message);
-        // }
+        const { data } = await axios.get('http://localhost:5005/', { withCredentials: true });
+        return data;
     } catch (error) {
         console.log(error.message)
     }
-
+    
 });
 
-const loginUser = createAsyncThunk('auth/user', async(userInfo) => {
-    const { data } = await axios.post('http://localhost:5005/', userInfo, { withCredentials: true });
-    return data;
+export const registerUser = createAsyncThunk('auth/register', async(userInfo) => {
+    return userInfo;
 });
 
-const handleLogout = createAsyncThunk('auth/user', async() => {
-    const { data } = await axios.get('http://localhost:5005/', { withCredentials: true });
-    return data;
+export const loginUser = createAsyncThunk('auth/login', async(userInfo) => {
+    // const { data } = await axios.post('http://localhost:5005/', userInfo, { withCredentials: true });
+    return userInfo;
+});
+
+export const logoutUser = createAsyncThunk('auth/logout', async() => {
+    const { data } = await axios.get('http://localhost:5005/auth/logout', { withCredentials: true });
+    return data.auth;
 });
 
 const authSlice = createSlice({
@@ -51,17 +39,55 @@ const authSlice = createSlice({
         builder
             .addCase(fetchUser.fulfilled, (state, action) => {
                 state.user = action.payload;
-                state.authLoading = false;
-                state.authError = false;
+                state.loading = false;
+                state.error = false;
             })
             .addCase(fetchUser.pending, (state, action) => {
-                state.authLoading = true;
-                state.authError = false;
+                state.loading = true;
+                state.error = false;
             })
             .addCase(fetchUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = true;
+            })
+            .addCase(registerUser.fulfilled, (state, action) => {
                 state.user = action.payload;
-                state.authLoading = false;
-                state.authError = true;
+                state.loading = false;
+                state.error = false;
+            })
+            .addCase(registerUser.pending, (state, action) => {
+                state.loading = true;
+                state.error = false;
+            })
+            .addCase(registerUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = true;
+            })
+            .addCase(loginUser.fulfilled, (state, action) => {
+                state.user = action.payload;
+                state.loading = false;
+                state.error = false;
+            })
+            .addCase(loginUser.pending, (state, action) => {
+                state.loading = true;
+                state.error = false;
+            })
+            .addCase(loginUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = true;
+            })
+            .addCase(logoutUser.fulfilled, (state, action) => {
+                state.user = action.payload;
+                state.loading = false;
+                state.error = false;
+            })
+            .addCase(logoutUser.pending, (state, action) => {
+                state.loading = true;
+                state.error = false;
+            })
+            .addCase(logoutUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = true;
             })
     }
 })

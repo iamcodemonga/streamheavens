@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 // main pages routes
 import Home from "./pages/main/Home";
@@ -18,22 +19,34 @@ import Favourites from "./components/UserFavourites";
 import ChangePassword from "./components/UserPassword";
 //others pages setup
 import Screen from "./pages/other/Screen";
+import { useSelector, useDispatch } from "react-redux";
+import { Navigate } from 'react-router-dom';
+import { fetchUser } from './features/authSlice';
 
 
 
 function App() {
+
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUser())
+  }, [dispatch])
+  
+
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home />} />
         <Route path="movies" element={<Movies/>} />
         <Route path="tvshows" element={<TvShows/>} />
         <Route path="pricing" element={<Pricing/>} />
         <Route path="about" element={<About/>} />
-        <Route path="register" element={<Register/>} />
-        <Route path="login" element={<Login/>} />
-        <Route path="forgotpassword" element={<ForgotPassword/>} />
-        <Route path="reset" element={<Reset/>} />
+        <Route path="register" element={auth.user ? <Navigate to='/' /> : <Register/>} />
+        <Route path="login" element={auth.user ? <Navigate to='/' /> : <Login/>} />
+        <Route path="forgotpassword" element={auth.user ? <Navigate to='/' /> : <ForgotPassword/>} />
+        <Route path="reset" element={auth.user ? <Navigate to='/' /> : <Reset/>} />
         <Route path=":id" element={<Profile/>} >
             <Route index element={<Details/>} />
             <Route path="favourites" element={<Favourites/>} />

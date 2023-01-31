@@ -2,11 +2,14 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import LeftBar from '../../components/sidebars/ProfileBar';
 import NavBar from '../../components/navbars/ProfileNav';
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '../../features/authSlice';
 import Footer from '../../components/Footer'
 
 const Profile = () => {
 
     const { id } = useParams();
+    const dispatch = useDispatch()
 
     const handleSideBar = () => {
         const profile_menubar = document.querySelector('.profile_menubar');
@@ -23,6 +26,11 @@ const Profile = () => {
             profile_navlist.style.opacity = '0';
             leftbar.style.width = '0';
         });
+    }
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+        dispatch(logoutUser())
     }
 
     useEffect(() => {
@@ -42,7 +50,7 @@ const Profile = () => {
                                 <li className="nav-item"><NavLink className="nav-link" to="favourites">Favourites</NavLink></li>
                                 <li className="nav-item"><NavLink className="nav-link" to="edit">Edit account</NavLink></li>
                                 <li className="nav-item"><NavLink className="nav-link" to="password">Change Password</NavLink></li>
-                                <li className="nav-item"><NavLink className="nav-link" to="/logout">Logout</NavLink></li>
+                                <li className="nav-item"><NavLink className="nav-link" to="/logout" onClick={(e) => handleLogout(e)}>Logout</NavLink></li>
                             </ul>
                         </div>
                         <div className="col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
