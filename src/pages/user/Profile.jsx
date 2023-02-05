@@ -1,15 +1,17 @@
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { useNavigate, NavLink, Outlet, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import LeftBar from '../../components/sidebars/ProfileBar';
 import NavBar from '../../components/navbars/ProfileNav';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../features/authSlice';
 import Footer from '../../components/Footer'
 
 const Profile = () => {
 
+    const dispatch = useDispatch();
+    const auth = useSelector((state) => state.auth);
+    const navigate = useNavigate();
     const { id } = useParams();
-    const dispatch = useDispatch()
 
     const handleSideBar = () => {
         const profile_menubar = document.querySelector('.profile_menubar');
@@ -31,16 +33,18 @@ const Profile = () => {
     const handleLogout = (e) => {
         e.preventDefault();
         dispatch(logoutUser())
+        navigate('/')
     }
 
     useEffect(() => {
         handleSideBar();
-    }, [])
+        if (id !== auth.user._id) navigate('/')
+    }, [navigate, id, auth.user._id])
 
     return <>
         <LeftBar />
         <main id="profile_main">
-            <NavBar userid={id} />
+            <NavBar user={auth.user && auth.user} />
             <section className="profile_section">
                 <div className="container pt-1 px-md-4">
                     <div className="row gy-4 mb-5 mt-4">

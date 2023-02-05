@@ -19,6 +19,7 @@ import Favourites from "./components/UserFavourites";
 import ChangePassword from "./components/UserPassword";
 //others pages setup
 import Screen from "./pages/other/Screen";
+import Loader from './components/Loaders/PageLoader'
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from 'react-router-dom';
 import { fetchUser } from './features/authSlice';
@@ -27,8 +28,8 @@ import { fetchUser } from './features/authSlice';
 
 function App() {
 
-  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(fetchUser())
@@ -37,24 +38,32 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="movies" element={<Movies/>} />
-        <Route path="tvshows" element={<TvShows/>} />
-        <Route path="pricing" element={<Pricing/>} />
-        <Route path="about" element={<About/>} />
-        <Route path="register" element={auth.user ? <Navigate to='/' /> : <Register/>} />
-        <Route path="login" element={auth.user ? <Navigate to='/' /> : <Login/>} />
-        <Route path="forgotpassword" element={auth.user ? <Navigate to='/' /> : <ForgotPassword/>} />
-        <Route path="reset" element={auth.user ? <Navigate to='/' /> : <Reset/>} />
-        <Route path=":id" element={<Profile/>} >
-            <Route index element={<Details/>} />
-            <Route path="favourites" element={<Favourites/>} />
-            <Route path="edit" element={<EditProfile/>} />
-            <Route path="password" element={<ChangePassword/>} />
-        </Route>
-        <Route path="screen" element={<Screen/>} />
-      </Routes>
+      {auth.loading ? <Loader /> :
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="movies" element={<Movies/>} />
+          <Route path="tvshows" element={<TvShows/>} />
+          <Route path="pricing" element={<Pricing/>} />
+          <Route path="about" element={<About/>} />
+          <Route path="screen" element={<Screen/>} />
+          {auth.user ? <Route path="register" element={ <Navigate to='/' /> } /> : <Route path="register" element={ <Register/> } /> }
+          {auth.user ? <Route path="login" element={ <Navigate to='/' /> } /> : <Route path="login" element={ <Login/> } /> }
+          {auth.user ? <Route path="forgotpassword" element={ <Navigate to='/' /> } /> : <Route path="forgotpassword" element={ <ForgotPassword/> } /> }
+          {auth.user ? <Route path="reset" element={ <Navigate to='/' /> } /> : <Route path="reset" element={ <Reset/> } /> }
+          {auth.user ? <Route path=":id" element={ <Profile/> } >
+              <Route index element={ <Details/> } />
+              <Route path="favourites" element={ <Favourites/> } />
+              <Route path="edit" element={ <EditProfile/> } />
+              <Route path="password" element={ <ChangePassword/> } />
+          </Route> : <Route path=":id" element={ <Navigate to='/' /> } >
+              <Route index element={ <Navigate to='/' /> } />
+              <Route path="favourites" element={ <Navigate to='/' /> } />
+              <Route path="edit" element={ <Navigate to='/' /> } />
+              <Route path="password" element={ <Navigate to='/' /> } />
+          </Route>}
+        </Routes>
+      }
+      
     </div>
   );
 }

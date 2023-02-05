@@ -20,7 +20,7 @@ const HomeCarousel = () => {
                 {ratedMoviesError && <Loader />}
                 {ratedMoviesLoading && <Loader />}
                 {ratedMoviesSuccess && ratedMovies.slice(0, 3).map((movie, index) => <Carousel.Item key={index}>
-                    <div className="slide-container position-relative" key={index}>
+                    <div className="slide-container position-relative">
                         <img className="w-100 h-100" src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="Slide_Image" style={{objectFit: 'cover', objectPosition: 'top', backgroundColor: '#121317'}} />
                         <div className="carousel-overlay w-100 h-100 position-absolute d-flex align-items-center">
                             <div className="carousel-content p-4">
