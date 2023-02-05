@@ -41,6 +41,7 @@ const UserEdit = () => {
                 dispatch(fetchUser())
                 setTimeout(() => {
                     setStatus({...status, error: null, message: ""})
+                    dispatch(fetchUser())
                 }, 2000)
                 return;
             }
@@ -81,13 +82,13 @@ const UserEdit = () => {
 
             const ext = dp.name.split('.').pop();
             const formData = new FormData();
-            let filename = `${user._id}_${Date.now()}.${ext}`;
+            const filename = `${user._id}_${Date.now()}.${ext}`;
             formData.append("name", filename);
             formData.append("dp", dp);
 
             try{
                 // let { data } = await axios.put(`${AppRoot}/edit/${user._id}/`, { dp: "", fullname, email, gender, birthday, country });
-                let { data } = await axios.put(`${AppRoot}/edit/${user._id}/`, { dp: filename, fullname, email, gender, birthday, country });
+                let { data } = await axios.put(`${AppRoot}/edit/${user._id}/`, { dp: `${AppRoot}/${filename}`, fullname, email, gender, birthday, country });
                 // let response = await axios.all([updateDp, updateUser])
 
                 if (data.message.status === "failed") {
@@ -105,9 +106,9 @@ const UserEdit = () => {
                     if (data.message === "image uploaded successfully") {
                         setLoading(false)
                         setStatus((prev) => { return {...prev, error: false, message: "Profile updated successfully!"} }) 
-                        dispatch(fetchUser())
                         setTimeout(() => {
                             setStatus({...status, error: null, message: ""})
+                            dispatch(fetchUser())
                         }, 2000)
                         return;
                     }
@@ -142,7 +143,7 @@ const UserEdit = () => {
                     <div className="col">
                     <form onSubmit={handleUser}>
                         {/* <div className="col-12"><img className="profile_dp" src={!dp ? dpURL ? dpURL : "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png"  : `${AppRoot}/${dp}`} alt='profile_image' /></div> */}
-                        <div className="col-12"><img className="profile_dp" src={!dpURL ? dp ? `${AppRoot}/${dp}` : "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" : dpURL} alt='profile_image' /></div>
+                        <div className="col-12"><img className="profile_dp" src={!dpURL ? dp ? `${dp}` : "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" : dpURL} alt='profile_image' /></div>
                         {/* <div className="col-12"><img className="profile_dp" src={!dp ? "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" : `${AppRoot}/${dp}`} alt='profile_image' /></div> */}
                         <div className="col-12">
                         <div className="row g-0 mt-4">

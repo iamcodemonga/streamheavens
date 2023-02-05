@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 const MainNav = () => {
 
     const auth = useSelector((state) => state.auth);
-    const AppRoot = "http://localhost:5005";
 
   return (
         <div id="topbar" className="py-3 px-3 w-100">
@@ -16,7 +15,7 @@ const MainNav = () => {
                         {!auth.loading  ? auth.user ? 
                             <Link className="btn d-flex align-items-center me-1 text-light px-0 me-2" to={`/${auth.user._id}`}>
                                 <div className="d-flex justify-content-center align-items-center" style={{width: 25, height: 25, clipPath: 'circle()', backgroundColor: 'white'}}> 
-                                    {auth.user.dp ? <img width="21px" src={`${AppRoot}/${auth.user.dp}`} height="21px" style={{objectFit: 'cover', clipPath: 'circle()'}} alt="Profile_picture" /> : <img width="21px" src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" height="21px" style={{objectFit: 'cover', clipPath: 'circle()'}} alt="Profile_picture" />}
+                                    {auth.user.dp ? <img width="21px" src={`${auth.user.dp}`} height="21px" style={{objectFit: 'cover', clipPath: 'circle()'}} alt="Profile_picture" /> : <img width="21px" src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" height="21px" style={{objectFit: 'cover', clipPath: 'circle()'}} alt="Profile_picture" />}
                                 </div><span className="d-none d-lg-block ms-2">account</span>
                             </Link> : 
                             <Link className="btn d-flex text-light px-0 me-2" role="button" to="/register">

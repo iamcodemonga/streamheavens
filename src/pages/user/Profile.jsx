@@ -53,7 +53,7 @@ const Profile = () => {
                                 {/* <li className="nav-item"><NavLink className="nav-link" to={"/"+id}>About me</NavLink></li> */}
                                 <li className="nav-item"><NavLink className="nav-link" to="favourites">Favourites</NavLink></li>
                                 <li className="nav-item"><NavLink className="nav-link" to="edit">Edit account</NavLink></li>
-                                <li className="nav-item"><NavLink className="nav-link" to="password">Change Password</NavLink></li>
+                                {!auth.user.googleId && <li className="nav-item"><NavLink className="nav-link" to="password">Change Password</NavLink></li>}
                                 <li className="nav-item"><NavLink className="nav-link" to="/logout" onClick={(e) => handleLogout(e)}>Logout</NavLink></li>
                             </ul>
                         </div>

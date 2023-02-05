@@ -3,12 +3,11 @@ import { useSelector } from 'react-redux'
 const UserDetails = () => {
 
     const user = useSelector((state) => state.auth.user);
-    const AppRoot = "http://localhost:5005";
 
   return (
         <div className="w-100 h-100 py-5 px-4 bg-dark" style={{borderRadius: 20}}>
             <div className="row">
-                <div className="col-12"><img className="profile_dp" src={user ? user.dp ? `${AppRoot}/${user.dp}` :"https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png": "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png"} alt='profile_picture' /></div>
+                <div className="col-12"><img className="profile_dp" src={user ? user.dp ? `${user.dp}` :"https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png": "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png"} alt='profile_picture' /></div>
                 <div className="col-12">
                 <div className="row g-0 mt-4">
                     <div className="col-sm-12 col-md-6">

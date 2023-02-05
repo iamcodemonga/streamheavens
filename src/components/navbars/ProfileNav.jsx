@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 const ProfileNav = ({ user }) => {
 
-    const AppRoot = "http://localhost:5005";
-
     return (
             <div id="profilebar" className="py-3 px-3 w-100">
                 <nav className="navbar navbar-dark p-3">
@@ -13,7 +11,7 @@ const ProfileNav = ({ user }) => {
                         <div className="d-flex">
                             <Link className="btn d-flex align-items-center me-1 text-light px-0 me-2" to={user ? "/"+user._id: ""}>
                                 <div className="d-flex justify-content-center align-items-center" style={{width: 25, height: 25, clipPath: 'circle()', backgroundColor: 'white'}}>
-                                    <img width="21px" src={user ? user.dp ? `${AppRoot}/${user.dp}` : "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" : "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" } height="21px" style={{objectFit: 'cover', clipPath: 'circle()'}} alt="Profile_picture" />
+                                    <img width="21px" src={user ? user.dp ? `${user.dp}` : "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" : "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" } height="21px" style={{objectFit: 'cover', clipPath: 'circle()'}} alt="Profile_picture" />
                                 </div>
                                 <span className="d-none d-lg-block ms-2">Profile</span>
                             </Link>
