@@ -3,6 +3,7 @@ import axios from "axios";
 
 const key = process.env.REACT_APP_MOVIE_API;
 const baseURL = process.env.REACT_APP_MOVIE_BASEURL;
+const AppRoot = process.env.REACT_APP_API_ROOT;
 
 const initialState = {
     billBoard: [],
@@ -11,6 +12,7 @@ const initialState = {
     trendingMovies: [],
     tvSeries: [],
     movies: [],
+    favourites: [],
     billBoardLoading: false,
     billBoardError: false,
     billBoardSuccess: false,
@@ -28,11 +30,14 @@ const initialState = {
     tvSeriesSuccess: false,
     moviesLoading: false,
     moviesError: false,
-    moviesSuccess: false
+    moviesSuccess: false,
+    favouritesLoading: false,
+    favouritesError: false,
+    favouritesSuccess: false
 }
 
 export const fetchBillBoard = createAsyncThunk("content/billboard", async() => {
-    const { data } = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=eddc53e2373dc83fa1affadf2d9a1efb`);
+    const { data } = await axios.get(`${baseURL}/trending/all/day?api_key=eddc53e2373dc83fa1affadf2d9a1efb`);
     const index =Math.floor(Math.random()*data.results.length);
     return data.results[index];
 });
@@ -72,9 +77,24 @@ export const fetchMovies = createAsyncThunk("content/movies", async(query) => {
     }
 });
 
+export const fetchFavourites = createAsyncThunk('content/favourites', async() => {
+    try {
+        const { data } = await axios.get(`${AppRoot}/favourites/all/`, { withCredentials: true })
+        return data.favourites;
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
 const contentSlice = createSlice({
     name: "content",
     initialState,
+    reducers:  {
+        removeFavourites(state, action) {
+            let newFavourites = state.favourites.filter((favourite, index) => favourite.poster !== action.payload)
+            state.favourites = newFavourites;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchBillBoard.fulfilled, (state, action) => {
@@ -173,7 +193,24 @@ const contentSlice = createSlice({
                 state.tvSeriesError = true;
                 state.tvSeriesSuccess = false;
             })
+            .addCase(fetchFavourites.fulfilled, (state, action) => {
+                state.favourites = action.payload;
+                state.favouritesLoading = false;
+                state.favouritesError = false;
+                state.favouritesSuccess = true;
+            })
+            .addCase(fetchFavourites.pending, (state, action) => {
+                state.favouritesLoading = true;
+                state.favouritesError = false;
+                state.favouritesSuccess = false;
+            })
+            .addCase(fetchFavourites.rejected, (state, action) => {
+                state.favouritesLoading = false;
+                state.favouritesError = true;
+                state.favouritesSuccess = false;
+            })
     }
 })
 
+export const { removeFavourites } = contentSlice.actions;
 export default contentSlice.reducer;

@@ -10,21 +10,21 @@ const Footer = () => {
                     <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
                     <div>
                         <h5 className="text-center">StreamHeavens</h5>
-                        <p className="text-white-50 text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                        <p className="text-white-50 text-center">Watch and stream trending and upcoming movies from the best movie streaming platform in the world.</p>
                     </div>
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-6 col-xl-3 col-xxl-3 align-self-end mx-auto">
                     <div>
-                        <p className="text-center text_small"><a className="text-light" href="https://codemonga.bss.design" rel="noopener noreferrer">Twitter</a></p>
-                        <p className="text-center text_small"><a className="text-light" href="https://codemonga.bss.design" rel="noopener noreferrer">Instagram</a></p>
-                        <p className="text-center text_small"><a className="text-light" href="https://codemonga.bss.design" rel="noopener noreferrer">LinkedIn</a></p>
+                        <p className="text-center text_small"><a className="text-light" href="https://twitter.com/codemonga" rel="noopener noreferrer">Twitter</a></p>
+                        <p className="text-center text_small"><a className="text-light" href="https://instagram.com/codemonga" rel="noopener noreferrer">Instagram</a></p>
+                        <p className="text-center text_small"><a className="text-light" href="https://linkedin.com/in/codemonga" rel="noopener noreferrer">LinkedIn</a></p>
                     </div>
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-6 col-xl-3 col-xxl-3 align-self-end mx-auto">
                     <div>
-                        <p className="text-center text_small"><Link className="text-light" to="about">Developer</Link></p>
-                        <p className="text-center text_small"><Link className="text-light" to="about">About</Link></p>
-                        <p className="text-center text_small"><Link className="text-light" to="about">API</Link></p>
+                        <p className="text-center text_small"><Link className="text-light" to="/about">Developer</Link></p>
+                        <p className="text-center text_small"><Link className="text-light" to="/about">About</Link></p>
+                        <p className="text-center text_small"><Link className="text-light" to="/about">API</Link></p>
                     </div>
                     </div>
                 </div>

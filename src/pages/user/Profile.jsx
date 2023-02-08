@@ -50,7 +50,6 @@ const Profile = () => {
                     <div className="row gy-4 mb-5 mt-4">
                         <div className="col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
                             <ul className="nav flex-column py-4 bg-dark px-3" id="profileNav">
-                                {/* <li className="nav-item"><NavLink className="nav-link" to={"/"+id}>About me</NavLink></li> */}
                                 <li className="nav-item"><NavLink className="nav-link" to="favourites">Favourites</NavLink></li>
                                 <li className="nav-item"><NavLink className="nav-link" to="edit">Edit account</NavLink></li>
                                 {!auth.user.googleId && <li className="nav-item"><NavLink className="nav-link" to="password">Change Password</NavLink></li>}

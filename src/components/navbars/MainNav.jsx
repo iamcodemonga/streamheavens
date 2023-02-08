@@ -6,7 +6,7 @@ const MainNav = () => {
 
     const auth = useSelector((state) => state.auth);
 
-  return (
+    return (
         <div id="topbar" className="py-3 px-3 w-100">
             <nav className="navbar navbar-dark p-3">
                 <div className="container-fluid">
@@ -16,7 +16,7 @@ const MainNav = () => {
                             <Link className="btn d-flex align-items-center me-1 text-light px-0 me-2" to={`/${auth.user._id}`}>
                                 <div className="d-flex justify-content-center align-items-center" style={{width: 25, height: 25, clipPath: 'circle()', backgroundColor: 'white'}}> 
                                     {auth.user.dp ? <img width="21px" src={`${auth.user.dp}`} height="21px" style={{objectFit: 'cover', clipPath: 'circle()'}} alt="Profile_picture" /> : <img width="21px" src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" height="21px" style={{objectFit: 'cover', clipPath: 'circle()'}} alt="Profile_picture" />}
-                                </div><span className="d-none d-lg-block ms-2">account</span>
+                                </div><span className="d-none d-lg-block ms-2">Profile</span>
                             </Link> : 
                             <Link className="btn d-flex text-light px-0 me-2" role="button" to="/register">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style={{fontSize: 23}}>

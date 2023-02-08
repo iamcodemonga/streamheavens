@@ -1,16 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const AppRoot = process.env.REACT_APP_API_ROOT;
+
 const initialState = {
     user: null,
     loading: true,
-    error: ""
+    error: "",
 }
 
 export const fetchUser = createAsyncThunk('auth/user', async() => {
 
     try {
-        const { data } = await axios.get('http://localhost:5005/', { withCredentials: true });
+        const { data } = await axios.get(`${AppRoot}/`, { withCredentials: true });
         return data;
     } catch (error) {
         console.log(error.message)
@@ -23,18 +25,25 @@ export const registerUser = createAsyncThunk('auth/register', async(userInfo) =>
 });
 
 export const loginUser = createAsyncThunk('auth/login', async(userInfo) => {
-    // const { data } = await axios.post('http://localhost:5005/', userInfo, { withCredentials: true });
     return userInfo;
 });
 
 export const logoutUser = createAsyncThunk('auth/logout', async() => {
-    const { data } = await axios.get('http://localhost:5005/auth/logout', { withCredentials: true });
+    const { data } = await axios.get(`${AppRoot}/auth/logout`, { withCredentials: true });
     return data.auth;
 });
 
 const authSlice = createSlice({
     name: 'auth',
     initialState,
+    reducers: {
+        addToList(state, action) {
+            state.user.favourites = [ ...state.user.favourites, action.payload];
+        },
+        removeFromListed(state, action) {
+            state.user.favourites = state.user.favourites.filter((favourite, index) => favourite !== action.payload)
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchUser.fulfilled, (state, action) => {
@@ -92,4 +101,5 @@ const authSlice = createSlice({
     }
 })
 
+export const { listedPosters, addToList, removeFromListed } = authSlice.actions;
 export default authSlice.reducer;

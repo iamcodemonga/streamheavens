@@ -1,5 +1,4 @@
-import "../../assets/css/home.css"
-// import { NavLink, Link } from 'react-router-dom';
+import "../../assets/css/home.css";
 import { useEffect } from "react";
 import LeftBar from '../../components/sidebars/MainBar';
 import NavBar from '../../components/navbars/MainNav';
@@ -38,7 +37,7 @@ const About = () => {
             <section>
                 <div className="container-fluid pt-1 px-md-4">
                     <h3>The Company</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate</p>
+                    <p>We are streamheavens! On a mission to entertain and keep people happy across the globe. We serve upcoming, trending movies and Tv shows to you all the way from heaven. Don't forget to add your favourite movie or show to your favourite list, so you can watch it again.</p>
                 </div>     
                 <Team />
             </section>

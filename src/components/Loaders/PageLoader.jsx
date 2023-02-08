@@ -1,11 +1,11 @@
 import React from 'react'
+import BeatLoader from 'react-spinners/BeatLoader'
 
-const PageLoader = () => {
+const PageLoader = ({ loading }) => {
+
   return (
     <section className='w-100 vh-100 d-flex justify-content-center align-items-center'>
-        <div>
-            <img src="./streamloader.svg" alt="page_loader" width={'50px'} />
-        </div>
+        <BeatLoader size={15} color={'#ff006e'} loading={loading} aria-label="Loading Spinner" data-testid="loader" />
     </section>
   )
 }

@@ -19,6 +19,7 @@ import Favourites from "./components/UserFavourites";
 import ChangePassword from "./components/UserPassword";
 //others pages setup
 import Screen from "./pages/other/Screen";
+//required packages and components
 import Loader from './components/Loaders/PageLoader'
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from 'react-router-dom';
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      {auth.loading ? <Loader /> :
+      {auth.loading ? <Loader loading={auth.loading} /> :
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="movies" element={<Movies/>} />
