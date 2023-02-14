@@ -25,8 +25,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from 'react-router-dom';
 import { fetchUser } from './features/authSlice';
 
-
-
 function App() {
 
   const dispatch = useDispatch();
@@ -36,7 +34,6 @@ function App() {
     dispatch(fetchUser())
   }, [dispatch])
   
-
   return (
     <div className="App">
       {auth.loading ? <Loader loading={auth.loading} /> :

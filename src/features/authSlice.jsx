@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const AppRoot = process.env.REACT_APP_API_ROOT;
+const userid = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
     user: null,
@@ -12,7 +13,7 @@ const initialState = {
 export const fetchUser = createAsyncThunk('auth/user', async() => {
 
     try {
-        const { data } = await axios.get(`${AppRoot}/`, { withCredentials: true });
+        const { data } = await axios.get(`${AppRoot}/${userid}`);
         return data;
     } catch (error) {
         console.log(error.message)
@@ -21,16 +22,18 @@ export const fetchUser = createAsyncThunk('auth/user', async() => {
 });
 
 export const registerUser = createAsyncThunk('auth/register', async(userInfo) => {
+    localStorage.setItem('user', JSON.stringify(userInfo._id));
     return userInfo;
 });
 
 export const loginUser = createAsyncThunk('auth/login', async(userInfo) => {
+    localStorage.setItem('user', JSON.stringify(userInfo._id));
     return userInfo;
 });
 
 export const logoutUser = createAsyncThunk('auth/logout', async() => {
-    const { data } = await axios.get(`${AppRoot}/auth/logout`, { withCredentials: true });
-    return data.auth;
+    localStorage.removeItem('user');
+    return null;
 });
 
 const authSlice = createSlice({
@@ -69,6 +72,7 @@ const authSlice = createSlice({
                 state.error = false;
             })
             .addCase(registerUser.rejected, (state, action) => {
+                state.user = null;
                 state.loading = false;
                 state.error = true;
             })
@@ -82,11 +86,12 @@ const authSlice = createSlice({
                 state.error = false;
             })
             .addCase(loginUser.rejected, (state, action) => {
+                state.user = null;
                 state.loading = false;
                 state.error = true;
             })
             .addCase(logoutUser.fulfilled, (state, action) => {
-                state.user = action.payload;
+                state.user = null;
                 state.loading = false;
                 state.error = false;
             })

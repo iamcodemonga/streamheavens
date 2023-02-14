@@ -11,7 +11,7 @@ const LatestMovies = () => {
     const  user = useSelector((state) => state.auth.user);
     const { latestMovies, latestMoviesLoading, latestMoviesError, latestMoviesSuccess } = useSelector((state) => state.content)
     const [showModal, setShowModal] = useState(false);
-    const [details, setDetails] = useState([])
+    const [details, setDetails] = useState([]);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const AppRoot = process.env.REACT_APP_API_ROOT;
@@ -26,7 +26,7 @@ const LatestMovies = () => {
         handleShow();
     }
 
-    const handleLike = ({ poster, title, released, series }) => {
+    const handleLike = async({ poster, title, released, series }) => {
 
         if(!user) {
             navigate('/register'); 
@@ -36,9 +36,8 @@ const LatestMovies = () => {
         if (user.favourites.includes(poster)) {
             dispatch(removeFromListed(poster))
             try {
-                const { data } = axios.put(`${AppRoot}/favourites/like/${user._id}`, { poster, title, released, series })
-                console.log(data)
-                return { data }
+                const { data } = await axios.put(`${AppRoot}/favourites/like/${user._id}`, { poster, title, released, series });
+                return data;
             } catch (error) {
                 console.log(error.message)
             }
@@ -46,13 +45,11 @@ const LatestMovies = () => {
         }
         dispatch(addToList(poster))
         try {
-            const { data } = axios.put(`${AppRoot}/favourites/like/${user._id}`, { poster, title, released, series })
-            console.log(data)
-            return { data }
+            const { data } = await axios.put(`${AppRoot}/favourites/like/${user._id}`, { poster, title, released, series })
+            return data;
         } catch (error) {
             console.log(error.message)
         }
-        console.log(user.favourites)
     }
 
     useEffect(() => {

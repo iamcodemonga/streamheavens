@@ -40,8 +40,7 @@ const ShowList = () => {
             dispatch(removeFromListed(poster))
             try {
                 const { data } = axios.put(`${AppRoot}/favourites/like/${user._id}`, { poster, title, released, series })
-                console.log(data)
-                return { data }
+                return data;
             } catch (error) {
                 console.log(error.message)
             }
@@ -50,12 +49,10 @@ const ShowList = () => {
         dispatch(addToList(poster))
         try {
             const { data } = axios.put(`${AppRoot}/favourites/like/${user._id}`, { poster, title, released, series })
-            console.log(data)
-            return { data }
+            return data;
         } catch (error) {
             console.log(error.message)
         }
-        console.log(user.favourites)
     }
 
     const handleSearch = async() => {

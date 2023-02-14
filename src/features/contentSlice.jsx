@@ -4,6 +4,7 @@ import axios from "axios";
 const key = process.env.REACT_APP_MOVIE_API;
 const baseURL = process.env.REACT_APP_MOVIE_BASEURL;
 const AppRoot = process.env.REACT_APP_API_ROOT;
+const userid = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
     billBoard: [],
@@ -48,7 +49,7 @@ export const fetchRatedMovies = createAsyncThunk("content/ratedMovies", async() 
 });
 
 export const fetchLatestMovies = createAsyncThunk("content/latestMovies", async() => {
-    const { data } =  await axios(`${baseURL}/movie/upcoming?api_key=${key}&language=en-US&page=2`);
+    const { data } =  await axios(`${baseURL}/movie/upcoming?api_key=${key}&language=en-US&page=1`);
     return data.results;
 });
 
@@ -79,7 +80,7 @@ export const fetchMovies = createAsyncThunk("content/movies", async(query) => {
 
 export const fetchFavourites = createAsyncThunk('content/favourites', async() => {
     try {
-        const { data } = await axios.get(`${AppRoot}/favourites/all/`, { withCredentials: true })
+        const { data } = await axios.get(`${AppRoot}/favourites/${userid}`)
         return data.favourites;
     } catch (error) {
         console.log(error.message)

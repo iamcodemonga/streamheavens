@@ -8,6 +8,7 @@ import Loader from './Loaders/favouritesLoader';
 
 const UserFavourites = () => {
 
+    const AppRoot = process.env.REACT_APP_API_ROOT;
     const user = useSelector((state) => state.auth.user);
     let  { favourites, favouritesLoading, favouritesError, favouritesSuccess } = useSelector((state) => state.content)
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const UserFavourites = () => {
         dispatch(removeFavourites(info.poster))
         dispatch(removeFromListed(info.poster))
         try {
-            const { data } = axios.put(`http://localhost:5005/favourites/like/${user._id}`, { title: info.title, poster: info.poster, released: info.released, series: info.series });
+            const { data } = axios.put(`${AppRoot}/favourites/like/${user._id}`, { title: info.title, poster: info.poster, released: info.released, series: info.series });
             console.log(data);
         } catch (error) {
             console.log(error.message)
@@ -32,6 +33,11 @@ const UserFavourites = () => {
             <div className="row">
                 {favouritesLoading && <Loader />}
                 {favouritesError && <Loader />}
+                {favouritesSuccess && favourites.length === 0 && <div className='d-flex justify-content-center align-items-center w-100' style={{height: '30vh'}}><div>
+                        <h6>You have not added any favourites yet</h6>
+                        <p className='text-center'><Link className="btn btn-primary bg-primary border-0 mt-2" role="button" to="/">start streaming</Link></p>
+                        </div>
+                    </div> }
                 {favouritesSuccess  && favourites.map((favourite, index) => 
                     <div className="col-12 mb-4" key={index}>
                         <div className="d-flex justify-content-between align-items-center">
@@ -54,11 +60,6 @@ const UserFavourites = () => {
                         </div>
                         <hr />
                     </div>) }
-                {favouritesSuccess && favourites.length === 0 && <div className='d-flex justify-content-center align-items-center w-100' style={{height: '30vh'}}><div>
-                        <h6>You have not added any favourites yet</h6>
-                        <p className='text-center'><Link className="btn btn-primary bg-primary border-0 mt-2" role="button" to="/">start streaming</Link></p>
-                        </div>
-                    </div> }
             </div>
         </div>
   )
