@@ -2,7 +2,7 @@
 import { Routes, Route } from "react-router-dom";
 // main pages routes
 import Home from "./pages/main/Home";
-// import Movies from "./pages/main/Movies";
+import Movies from "./pages/main/Movies";
 // import TvShows from "./pages/main/TvShows";
 // import Pricing from "./pages/main/Pricing";
 // import About from "./pages/main/About";
@@ -38,8 +38,8 @@ function App() {
     <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="movies" element={<Movies/>} />
-          <Route path="tvshows" element={<TvShows/>} />
+          <Route path="movies" element={<Movies/>} />
+          {/* <Route path="tvshows" element={<TvShows/>} />
           <Route path="pricing" element={<Pricing/>} />
           <Route path="about" element={<About/>} />
           <Route path="screen" element={<Screen/>} />
