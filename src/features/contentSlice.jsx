@@ -3,8 +3,6 @@ import axios from "axios";
 
 const key = process.env.REACT_APP_MOVIE_API;
 const baseURL = process.env.REACT_APP_MOVIE_BASEURL;
-const AppRoot = process.env.REACT_APP_API_ROOT;
-const userid = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
     billBoard: [],
@@ -78,24 +76,18 @@ export const fetchMovies = createAsyncThunk("content/movies", async(query) => {
     }
 });
 
-export const fetchFavourites = createAsyncThunk('content/favourites', async() => {
-    try {
-        const { data } = await axios.get(`${AppRoot}/favourites/${userid}`)
-        return data.favourites;
-    } catch (error) {
-        console.log(error.message)
-    }
-});
+// export const fetchFavourites = createAsyncThunk('content/favourites', async() => {
+//     try {
+//         const { data } = await axios.get(`${AppRoot}/favourites/${userid}`)
+//         return data.favourites;
+//     } catch (error) {
+//         console.log(error.message)
+//     }
+// });
 
 const contentSlice = createSlice({
     name: "content",
     initialState,
-    reducers:  {
-        removeFavourites(state, action) {
-            let newFavourites = state.favourites.filter((favourite, index) => favourite.poster !== action.payload)
-            state.favourites = newFavourites;
-        }
-    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchBillBoard.fulfilled, (state, action) => {
@@ -194,24 +186,7 @@ const contentSlice = createSlice({
                 state.tvSeriesError = true;
                 state.tvSeriesSuccess = false;
             })
-            .addCase(fetchFavourites.fulfilled, (state, action) => {
-                state.favourites = action.payload;
-                state.favouritesLoading = false;
-                state.favouritesError = false;
-                state.favouritesSuccess = true;
-            })
-            .addCase(fetchFavourites.pending, (state, action) => {
-                state.favouritesLoading = true;
-                state.favouritesError = false;
-                state.favouritesSuccess = false;
-            })
-            .addCase(fetchFavourites.rejected, (state, action) => {
-                state.favouritesLoading = false;
-                state.favouritesError = true;
-                state.favouritesSuccess = false;
-            })
     }
 })
 
-export const { removeFavourites } = contentSlice.actions;
 export default contentSlice.reducer;

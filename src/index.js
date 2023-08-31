@@ -6,13 +6,11 @@ import ScrollToTop from './components/ScrollToTop';
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import contentReducer from "./features/contentSlice";
-import authReducer from "./features/authSlice"
 import '/node_modules/bootstrap/dist/js/bootstrap';
 import './index.css';
 
 const store = configureStore({
-  reducer: { 
-    auth: authReducer,
+  reducer: {
     content: contentReducer,
   }
 });

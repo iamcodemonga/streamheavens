@@ -2,11 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import CloseButton from 'react-bootstrap/CloseButton';
-import { useSelector } from "react-redux";
 
 const Popup = ({ status, handleHide, details, mediatype }) => {
-
-    const  user = useSelector((state) => state.auth.user);
 
     return (
         <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" show={status} centered onHide={handleHide}>
@@ -36,7 +33,7 @@ const Popup = ({ status, handleHide, details, mediatype }) => {
                 </div>
             </Modal.Body>
             <Modal.Footer className="border-0">
-                {user ? <Link className="btn btn-primary border-0" role="button" to="/pricing">Watch now</Link> : <Link className="btn btn-primary border-0" role="button" to="/register">Watch now</Link>}
+                <Link className="btn btn-primary border-0" role="button" to="/pricing">Watch now</Link>
                 <button className="btn btn-light border-0" type="button" onClick={handleHide}>Close</button>
             </Modal.Footer>
         </Modal>
