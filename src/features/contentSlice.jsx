@@ -36,7 +36,7 @@ const initialState = {
 }
 
 export const fetchBillBoard = createAsyncThunk("content/billboard", async() => {
-    const { data } = await axios.get(`${baseURL}/trending/all/day?api_key=eddc53e2373dc83fa1affadf2d9a1efb`);
+    const { data } = await axios.get(`${baseURL}/trending/all/day?api_key=${key}`);
     const index =Math.floor(Math.random()*data.results.length);
     return data.results[index];
 });
@@ -75,15 +75,6 @@ export const fetchMovies = createAsyncThunk("content/movies", async(query) => {
         return data.results;
     }
 });
-
-// export const fetchFavourites = createAsyncThunk('content/favourites', async() => {
-//     try {
-//         const { data } = await axios.get(`${AppRoot}/favourites/${userid}`)
-//         return data.favourites;
-//     } catch (error) {
-//         console.log(error.message)
-//     }
-// });
 
 const contentSlice = createSlice({
     name: "content",

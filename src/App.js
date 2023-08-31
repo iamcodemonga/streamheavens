@@ -1,4 +1,3 @@
-// import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 // main pages routes
 import Home from "./pages/main/Home";
@@ -11,7 +10,6 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import Reset from "./pages/auth/ResetPassword";
-// import Loader from './components/Loaders/PageLoader'
 
 function App() {
   return (
